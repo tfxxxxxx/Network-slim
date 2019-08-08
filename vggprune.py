@@ -27,8 +27,8 @@ parser.add_argument('--save', default='', type=str, metavar='PATH',
 args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
 
-if not os.path.exists(args.save):
-    os.makedirs(args.save)
+if not os.path.exists('/content/Network-slim'):
+    os.makedirs('/content/Network-slim')
 
 model = vgg(dataset=args.dataset, depth=args.depth)
 if args.cuda:
