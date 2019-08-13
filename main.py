@@ -185,6 +185,6 @@ for epoch in range(args.start_epoch, args.epochs):
         'state_dict': model.state_dict(),
         'best_prec1': best_prec1,
         'optimizer': optimizer.state_dict(),
-    }, is_best, filepath=args.save)
+    }, is_best, filepath='/content/Network-slim')
 
 print("Best accuracy: "+str(best_prec1))
