@@ -120,7 +120,7 @@ def _download_and_uncompress_dataset(dataset_dir):
     dataset_dir: The directory where the temporary files are stored.
   """
   filename = _DATA_URL.split('/')[-1]
-  filepath = os.path.join('/content/Network-slim/Centripetal-SGD-master', filename)
+  filepath = os.path.join('/content/Network-slim/Centripetal-SGD-master/', filename)
 
   if not os.path.exists(filepath):
     def _progress(count, block_size, total_size):
