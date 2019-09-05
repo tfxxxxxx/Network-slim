@@ -36,7 +36,7 @@ from tfm_image_processor import CIFAR10Preprocessor
 #   Please follow https://github.com/tensorflow/models/blob/master/research/slim/datasets/download_and_convert_cifar10.py,
 #   download the CIFAR-10 dataset, convert it to TFRecord format,
 #   and rename the two output files as train.tfrecords and validation.tfrecords.
-DATA_PATH = '/content/Network-slim/Centripetal-SGD-master/'
+DATA_PATH = '/content/drive/My Drive/'
 
 
 class Dataset(object):
