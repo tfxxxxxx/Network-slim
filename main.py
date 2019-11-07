@@ -51,7 +51,7 @@ parser.add_argument('--arch', default='vgg', type=str,
 parser.add_argument('--depth', default=19, type=int,
                     help='depth of the neural network')
 
-tftest=0
+tflist = [0,0,0,0,0,0,0,0,0,0]
 
 
 args = parser.parse_args()
@@ -190,10 +190,11 @@ for epoch in range(args.start_epoch, args.epochs):
         'best_prec1': best_prec1,
         'optimizer': optimizer.state_dict(),
     }, is_best, filepath=args.save)
-    tfby=abs(prec1-tftest)
-    if tfby<0.05:
-      break
-    tftest=test_loss
+    tflist.append(prec1)
+    del tflist[0]
+    tf_std = np.std(tflist)
+    if tf_std<0.0012:
+        break
 
 print("Best accuracy: "+str(best_prec1))
 input = torch.randn(1, 3, 32, 32)
