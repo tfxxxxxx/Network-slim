@@ -52,7 +52,7 @@ parser.add_argument('--depth', default=19, type=int,
                     help='depth of the neural network')
 
 tftest=0
-bytest=0
+
 
 args = parser.parse_args()
 args.cuda = not args.no_cuda and torch.cuda.is_available()
@@ -190,11 +190,10 @@ for epoch in range(args.start_epoch, args.epochs):
         'best_prec1': best_prec1,
         'optimizer': optimizer.state_dict(),
     }, is_best, filepath=args.save)
-    tftest=test_loss
-    tfby=abs(tftest-bytest)
+    tfby=abs(prec1-tftest)
     if tfby<0.05:
       break
-    bytest=test_loss
+    tftest=test_loss
 
 print("Best accuracy: "+str(best_prec1))
 input = torch.randn(1, 3, 32, 32)
